@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Obesity Prediction</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 text-gray-800">
+    <div class="max-w-4xl mx-auto p-6 bg-white rounded-lg shadow-md my-10">
+        <h1 class="text-3xl font-bold mb-6 text-center text-indigo-600">Predict Obesity Category</h1>
+
+        <form action="/predict" method="post" class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <div>
+                <label class="block mb-1 font-medium">Age (in years):</label>
+                <input type="number" name="Age" step="0.1" class="w-full p-3 border rounded-md" required>
+            </div>
+
+            <div>
+                <label class="block mb-1 font-medium">Gender:</label>
+                <select name="Gender" class="w-full p-3 border rounded-md" required>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+            </div>
+
+            <div>
+                <label class="block mb-1 font-medium">Height (in meters):</label>
+                <input type="text" name="Height" class="w-full p-3 border rounded-md" required>
+            </div>
+
+            <div>
+                <label class="block mb-1 font-medium">Weight (in kg):</label>
+                <input type="text" name="Weight" class="w-full p-3 border rounded-md" required>
+            </div>
+
+            <div>
+                <label class="block mb-1 font-medium">Family History of Overweight:</label>
+                <select name="family_history_with_overweight" class="w-full p-3 border rounded-md" required>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+            </div>
+
+            <div>
+                <label class="block mb-1 font-medium">Do you eat high calorie food frequently (FAVC)?</label>
+                <select name="FAVC" class="w-full p-3 border rounded-md" required>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+            </div>
+
+            <div>
+                <label class="block mb-1 font-medium">Vegetable Consumption Frequency (1–3):</label>
+                <input type="text" name="FCVC" class="w-full p-3 border rounded-md" required>
+            </div>
+
+            <div>
+                <label class="block mb-1 font-medium">Number of Main Meals per Day:</label>
+                <input type="text" name="NCP" class="w-full p-3 border rounded-md" required>
+            </div>
+
+            <div>
+                <label class="block mb-1 font-medium">Eating Between Meals (CAEC):</label>
+                <select name="CAEC" class="w-full p-3 border rounded-md" required>
+                    <option value="no">No</option>
+                    <option value="Sometimes">Sometimes</option>
+                    <option value="Frequently">Frequently</option>
+                    <option value="Always">Always</option>
+                </select>
+            </div>
+
+            <div>
+                <label class="block mb-1 font-medium">Do you smoke?</label>
+                <select name="SMOKE" class="w-full p-3 border rounded-md" required>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+            </div>
+
+            <div>
+                <label class="block mb-1 font-medium">Water Consumption (liters/day):</label>
+                <input type="text" name="CH2O" class="w-full p-3 border rounded-md" required>
+            </div>
+
+            <div>
+                <label class="block mb-1 font-medium">Calories Monitoring (SCC):</label>
+                <select name="SCC" class="w-full p-3 border rounded-md" required>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+            </div>
+
+            <div>
+                <label class="block mb-1 font-medium">Physical Activity Frequency (FAF) (hours/week):</label>
+                <input type="text" name="FAF" class="w-full p-3 border rounded-md" required>
+            </div>
+
+            <div class="lg:col-span-2">
+                <label class="block mb-1 font-medium">TUE (Time spent using technology for entertainment):</label>
+                <input type="text" name="TUE" class="w-full p-3 border rounded-md" required>
+            </div>
+
+            <div>
+                <label class="block mb-1 font-medium">Alcohol Consumption (CALC):</label>
+                <select name="CALC" class="w-full p-3 border rounded-md" required>
+                    <option value="no">No</option>
+                    <option value="Sometimes">Sometimes</option>
+                    <option value="Frequently">Frequently</option>
+                    <option value="Always">Always</option>
+                </select>
+            </div>
+
+            <div>
+                <label class="block mb-1 font-medium">Preferred Transportation Method:</label>
+                <select name="MTRANS" class="w-full p-3 border rounded-md" required>
+                    <option value="Public_Transportation">Public Transportation</option>
+                    <option value="Walking">Walking</option>
+                    <option value="Automobile">Automobile</option>
+                    <option value="Motorbike">Motorbike</option>
+                    <option value="Bike">Bike</option>
+                </select>
+            </div>
+
+            <div class="lg:col-span-2">
+                <input type="submit" value="Predict"
+                    class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-6 rounded-md mt-4 cursor-pointer transition duration-200">
+            </div>
+        </form>
+
+        {% if prediction %}
+        <div class="mt-6 text-center">
+            <h2 class="text-2xl font-bold text-green-600">Prediction: {{ prediction }}</h2>
+        </div>
+        {% endif %}
+    </div>
+</body>
+
+</html>
